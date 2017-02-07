@@ -95,14 +95,276 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="三个代码"><a href="#三个代码" class="headerlink" title="三个代码"></a>三个代码</h3><pre><code>sfdfdsf沙发斯蒂芬我认为我热热我热热我而威尔额外我认为二位我热认为认为 rwerewrew我认为人物而我热热我
-威尔额外热舞热热污染我二人人人人人人人人人人人人人人人人人人人人人人
-</code></pre>
+        <ul>
+<li><p>本文主要描述如何通过C＃实现实时监控文件目录下的变化，包括文件和目录的添加，删除，修改和重命名等操作。</p>
+</li>
+<li><p>首先，我们需要对.net提供的<strong>FileSystemWatcher</strong>类有所了解。我有些懒，找了MSDN对该类的描述。</p>
+</li>
+<li><p>FileSystemWatcher类侦听文件系统更改通知，并在目录或目录中的文件发生更改时引发事件。</p>
+</li>
+<li><p>使用 FileSystemWatcher 监视指定目录中的更改。可监视指定目录中的文件或子目录的更改。可以创建一个组件来监视本地计算机、网络驱动器或远程计算机上的文件。</p>
+</li>
+<li><p>若要监视所有文件中的更改，请将 Filter 属性设置为空字符串 (“”) 或使用通配符（“<em>.</em>”）。若要监视特定的文件，请将 Filter 属性设置为该文件名。例如，若要监视文件 MyDoc.txt 中的更改，请将 Filter 属性设置为“MyDoc.txt”。也可以监视特定类型文件中的更改。例如，若要监视文本文件中的更改，请将 Filter 属性设置为“*.txt”。</p>
+</li>
+<li><p>可监视目录或文件中的若干种更改。例如，可监视文件或目录的 Attributes、LastWrite 日期和时间或 Size 方面的更改。通过将 NotifyFilter 属性设置为 NotifyFilters 值之一来达到此目的。有关可监视的更改类型的更多信息，请参见 NotifyFilters。</p>
+</li>
+<li><p>可监视文件或目录的重命名、删除或创建。例如，若要监视文本文件的重命名，请将 Filter 属性设置为“*.txt”，并使用为其参数指定的 Renamed 来调用 WaitForChanged 方法。</p>
+</li>
+<li><p>Windows 操作系统在 FileSystemWatcher 创建的缓冲区中通知组件文件发生更改。如果短时间内有很多更改，则缓冲区可能会溢出。这将导致组件失去对目录更改的跟踪，并且它将只提供一般性通知。使用 InternalBufferSize 属性来增加缓冲区大小的开销较大，因为它来自无法换出到磁盘的非页面内存，所以应确保缓冲区大小适中（尽量小，但也要有足够大小以便不会丢失任何文件更改事件）。若要避免缓冲区溢出，请使用 NotifyFilter 和 IncludeSubdirectories 属性，以便可以筛选掉不想要的更改通知。</p>
+</li>
+</ul>
+<h3 id="使用-FileSystemWatcher-类时，请注意以下事项。"><a href="#使用-FileSystemWatcher-类时，请注意以下事项。" class="headerlink" title="使用 FileSystemWatcher 类时，请注意以下事项。"></a>使用 FileSystemWatcher 类时，请注意以下事项。</h3><ol>
+<li>对包括隐藏文件(夹)在内的所有文件(夹)进行监控。</li>
+<li>您可以为 InternalBufferSize 属性（用于监视网络上的目录）设置的最大大小为 64 KB。</li>
+</ol>
+<p>FileSystemWatcher的实例监控到文件(夹)的变化后，会触发相应的事件，其中文件(夹)的添加，删除和修改会分别触发Created，Deleted，Changed事件，文件(夹)重命名时触发OnRenamed事件。</p>
+<p>然后，在熟悉了FileSystemWatcher类后，我们开始自己的程序编写。</p>
+<p>实例化FileSystemWatcher类，并传入需要监控的目录路径，以及是否制定监控的文件类型（文章前面有所介绍）。</p>
+<pre><code>_watcher = new FileSystemWatcher(_path, _filter);
+</code></pre><p>注册监听事件，以及编写事件触发后相关的处理逻辑。</p>
+<pre><code>_watcher.Created += new FileSystemEventHandler(OnChanged);     
+_watcher.Changed += new FileSystemEventHandler(OnChanged);    
+_watcher.Deleted += new FileSystemEventHandler(OnChanged);      
+_watcher.Renamed += new RenamedEventHandler(OnRenamed);    
+_watcher.IncludeSubdirectories = true;       
+_watcher.EnableRaisingEvents = true;    
+</code></pre><p>在本程序中，专门定义了一个FileChangeInformation类来记录文件变化信息，并定义了一个CustomQueue类，该类类似于Queue类，是一个数据先进先出的集合，用来存储所有的文件变化消息，并提供数据持久化功能。              </p>
+<p>监控类 - FileWatcher，代码如下：<br>    /// <summary><br>    /// 文件监控类，用于监控指定目录下文件以及文件夹的变化<br>    /// </summary><br>    public class FileWatcher<br>    {<br>        private FileSystemWatcher _watcher = null;<br>        private string _path = string.Empty;<br>        private string _filter = string.Empty;<br>        private bool _isWatch = false;<br>        private CustomQueue<filechangeinformation> _queue = null;</filechangeinformation></p>
+<pre><code>    /// &lt;summary&gt;
+    /// 监控是否正在运行
+    /// &lt;/summary&gt;
+    public bool IsWatch
+    {
+        get
+        {
+            return _isWatch;
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// 文件变更信息队列
+    /// &lt;/summary&gt;
+    public CustomQueue&lt;FileChangeInformation&gt; FileChangeQueue
+    {
+        get
+        {
+            return _queue;
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// 初始化FileWatcher类
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;path&quot;&gt;监控路径&lt;/param&gt;
+    public FileWatcher(string path)
+    {
+        _path = path;
+        _queue = new CustomQueue&lt;FileChangeInformation&gt;();
+    }
+    /// &lt;summary&gt;
+    /// 初始化FileWatcher类，并指定是否持久化文件变更消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;path&quot;&gt;监控路径&lt;/param&gt;
+    /// &lt;param name=&quot;isPersistence&quot;&gt;是否持久化变更消息&lt;/param&gt;
+    /// &lt;param name=&quot;persistenceFilePath&quot;&gt;持久化保存路径&lt;/param&gt;
+    public FileWatcher(string path, bool isPersistence, string persistenceFilePath)
+    {
+        _path = path;
+        _queue = new CustomQueue&lt;FileChangeInformation&gt;(isPersistence, persistenceFilePath);
+    }
+
+    /// &lt;summary&gt;
+    /// 初始化FileWatcher类，并指定是否监控指定类型文件
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;path&quot;&gt;监控路径&lt;/param&gt;
+    /// &lt;param name=&quot;filter&quot;&gt;指定类型文件，格式如:*.txt,*.doc,*.rar&lt;/param&gt;
+    public FileWatcher(string path, string filter)
+    {
+        _path = path;
+        _filter = filter;
+        _queue = new CustomQueue&lt;FileChangeInformation&gt;();
+    }
+
+    /// &lt;summary&gt;
+    /// 初始化FileWatcher类，并指定是否监控指定类型文件，是否持久化文件变更消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;path&quot;&gt;监控路径&lt;/param&gt;
+    /// &lt;param name=&quot;filter&quot;&gt;指定类型文件，格式如:*.txt,*.doc,*.rar&lt;/param&gt;
+    /// &lt;param name=&quot;isPersistence&quot;&gt;是否持久化变更消息&lt;/param&gt;
+    /// &lt;param name=&quot;persistenceFilePath&quot;&gt;持久化保存路径&lt;/param&gt;
+    public FileWatcher(string path, string filter, bool isPersistence, string persistenceFilePath)
+    {
+        _path = path;
+        _filter = filter;
+        _queue = new CustomQueue&lt;FileChangeInformation&gt;(isPersistence, persistenceFilePath);
+    }
+
+    /// &lt;summary&gt;
+    /// 打开文件监听器
+    /// &lt;/summary&gt;
+    public void Open()
+    {
+        if (!Directory.Exists(_path))
+        {
+            Directory.CreateDirectory(_path);
+        }
+
+        if (string.IsNullOrEmpty(_filter))
+        {
+            _watcher = new FileSystemWatcher(_path);
+        }
+        else
+        {
+            _watcher = new FileSystemWatcher(_path, _filter);
+        }
+        //注册监听事件
+        _watcher.Created += new FileSystemEventHandler(OnProcess);
+        _watcher.Changed += new FileSystemEventHandler(OnProcess);
+        _watcher.Deleted += new FileSystemEventHandler(OnProcess);
+        _watcher.Renamed += new RenamedEventHandler(OnFileRenamed);
+        _watcher.IncludeSubdirectories = true;
+        _watcher.EnableRaisingEvents = true;
+        _isWatch = true;
+    }
+
+    /// &lt;summary&gt;
+    /// 关闭监听器
+    /// &lt;/summary&gt;
+    public void Close()
+    {
+        _isWatch = false;
+        _watcher.Created -= new FileSystemEventHandler(OnProcess);
+        _watcher.Changed -= new FileSystemEventHandler(OnProcess);
+        _watcher.Deleted -= new FileSystemEventHandler(OnProcess);
+        _watcher.Renamed -= new RenamedEventHandler(OnFileRenamed);
+        _watcher.EnableRaisingEvents = false;
+        _watcher = null;
+    }
+
+    /// &lt;summary&gt;
+    /// 获取一条文件变更消息
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public FileChangeInformation Get()
+    {
+        FileChangeInformation info = null;
+        if (_queue.Count &gt; 0)
+        {
+            lock (_queue)
+            {
+                info = _queue.Dequeue();
+            }
+        }
+        return info;
+    }
+
+    /// &lt;summary&gt;
+    /// 监听事件触发的方法
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;
+    /// &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;
+    private void OnProcess(object sender, FileSystemEventArgs e)
+    {
+        try
+        {
+            FileChangeType changeType = FileChangeType.Unknow;
+            if (e.ChangeType == WatcherChangeTypes.Created)
+            {
+                if (File.GetAttributes(e.FullPath) == FileAttributes.Directory)
+                {
+                    changeType = FileChangeType.NewFolder;
+                }
+                else
+                {
+                    changeType = FileChangeType.NewFile;
+                }
+            }
+            else if (e.ChangeType == WatcherChangeTypes.Changed)
+            {
+                //部分文件创建时同样触发文件变化事件，此时记录变化操作没有意义
+                //如果
+                if (_queue.SelectAll(
+                    delegate(FileChangeInformation fcm)
+                    {
+                        return fcm.NewPath == e.FullPath &amp;&amp; fcm.ChangeType == FileChangeType.Change;
+                    }).Count&lt;FileChangeInformation&gt;() &gt; 0)
+                {
+                    return;
+                }
+
+                //文件夹的变化，只针对创建，重命名和删除动作，修改不做任何操作。
+                //因为文件夹下任何变化同样会触发文件的修改操作，没有任何意义.
+                if (File.GetAttributes(e.FullPath) == FileAttributes.Directory)
+                {
+                    return;
+                }
+
+                changeType = FileChangeType.Change;
+            }
+            else if (e.ChangeType == WatcherChangeTypes.Deleted)
+            {
+                changeType = FileChangeType.Delete;
+            }
+
+            //创建消息，并压入队列中
+            FileChangeInformation info = new FileChangeInformation(Guid.NewGuid().ToString(), changeType, e.FullPath, e.FullPath, e.Name, e.Name);
+            _queue.Enqueue(info);
+        }
+        catch
+        {
+            Close();
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// 文件或目录重命名时触发的事件
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;
+    /// &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;
+    private void OnFileRenamed(object sender, RenamedEventArgs e)
+    {
+        try
+        {
+            //创建消息，并压入队列中
+            FileChangeInformation info = new FileChangeInformation(Guid.NewGuid().ToString(), FileChangeType.Rename, e.OldFullPath, e.FullPath, e.OldName, e.Name);
+            _queue.Enqueue(info);
+        }
+        catch
+        {
+            Close();
+        }
+    }
+}
+</code></pre><p>最后，功能调用如下：</p>
+<pre><code>//初始化监控器
+FileWatcher watcher = new FileWatcher(@&quot;D:\&quot;);
+watcher.Open();
+
+FileChangeInformation fci = null;
+//获取消息
+while (true)
+{
+    //如果IsWatch为False，则可能监控内部发生异常终止了监控，需要重新开启监控
+    if (watcher.IsWatch)
+    {
+        //队列顶端的变更消息
+        fci = watcher.Get();
+        //处理消息的代码
+        //Print(fci);
+    }
+    else
+    {
+        watcher.Open();
+    }
+    Thread.Sleep(1000);
+}
+</code></pre><p><em>该程序实现了对文件目录下所有子目录和子文件的变化进行监控，并可通过FileChangeQueue属性访问文件变更消息，同时也可以设置其是否需要将数据持久化到磁盘文件中。</em></p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://sabertang.github.io/2017/02/06/C＃实现对文件目录的实时监控/" data-id="ciyutm5yy0000ykqkxlqrinhl" class="article-share-link" data-share="baidu" data-title="C＃实现对文件目录的实时监控">分享到</a>
+        <a data-url="https://sabertang.github.io/2017/02/06/C＃实现对文件目录的实时监控/" data-id="ciyutsw7c0000swqkqgloyke0" class="article-share-link" data-share="baidu" data-title="C＃实现对文件目录的实时监控">分享到</a>
       
 
       
@@ -139,7 +401,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -152,14 +414,6 @@
         
           <li>
             <a href="/2017/02/06/C＃实现对文件目录的实时监控/">C＃实现对文件目录的实时监控</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/06/实现对文件目录的实时监控/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/06/My-New-Post/">My New Post</a>
           </li>
         
           <li>
