@@ -1,135 +1,50 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>简简单单每一天</title>
+  <subtitle>快乐生活</subtitle>
+  <link href="/atom.xml" rel="self"/>
   
-  <title>Archives: 2017/2 | 简简单单每一天</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="简简单单每一天">
-<meta property="og:url" content="https://sabertang.github.io/archives/2017/02/index.html">
-<meta property="og:site_name" content="简简单单每一天">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简简单单每一天">
+  <link href="https://sabertang.github.io/"/>
+  <updated>2017-02-07T00:54:59.770Z</updated>
+  <id>https://sabertang.github.io/</id>
   
-    <link rel="alternative" href="/atom.xml" title="简简单单每一天" type="application/atom+xml">
+  <author>
+    <name>saber</name>
+    <email>269341127@qq.com</email>
+  </author>
   
+  <generator uri="http://hexo.io/">Hexo</generator>
   
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-</head>
-<body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">简简单单每一天</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">快乐生活</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="/archives">归档</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="sabertang.github.io">
-        </form>
-      </div>
-    </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main">
-  
-    <article id="post-C＃实现对文件目录的实时监控" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/06/C＃实现对文件目录的实时监控/" class="article-date">
-  <time datetime="2017-02-06T09:14:54.000Z" itemprop="datePublished">2017-02-06</time>
-</a>
+  <entry>
+    <title>C＃实现对文件目录的实时监控</title>
+    <link href="https://sabertang.github.io/2017/02/06/C%EF%BC%83%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7/"/>
+    <id>https://sabertang.github.io/2017/02/06/C＃实现对文件目录的实时监控/</id>
+    <published>2017-02-06T09:14:54.000Z</published>
+    <updated>2017-02-07T00:54:59.770Z</updated>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C＃/">C＃</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/06/C＃实现对文件目录的实时监控/">C＃实现对文件目录的实时监控</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="三个代码"><a href="#三个代码" class="headerlink" title="三个代码"></a>三个代码</h3><pre><code>sfdfdsf沙发斯蒂芬我认为我热热我热热我而威尔额外我认为二位我热认为认为 rwerewrew我认为人物而我热热我
+    <content type="html"><![CDATA[<h3 id="三个代码"><a href="#三个代码" class="headerlink" title="三个代码"></a>三个代码</h3><pre><code>sfdfdsf沙发斯蒂芬我认为我热热我热热我而威尔额外我认为二位我热认为认为 rwerewrew我认为人物而我热热我
 威尔额外热舞热热污染我二人人人人人人人人人人人人人人人人人人人人人人
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://sabertang.github.io/2017/02/06/C＃实现对文件目录的实时监控/" data-id="ciyutm5yy0000ykqkxlqrinhl" class="article-share-link" data-share="baidu" data-title="C＃实现对文件目录的实时监控">分享到</a>
-      
-
-      
-        <a href="https://sabertang.github.io/2017/02/06/C＃实现对文件目录的实时监控/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;三个代码&quot;&gt;&lt;a href=&quot;#三个代码&quot; class=&quot;headerlink&quot; title=&quot;三个代码&quot;&gt;&lt;/a&gt;三个代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;sfdfdsf沙发斯蒂芬我认为我热热我热热我而威尔额外我认为二位我热认为认为 rwerewrew我认为人物而
+    
+    </summary>
+    
+      <category term="C＃" scheme="https://sabertang.github.io/categories/C%EF%BC%83/"/>
+    
+    
+  </entry>
   
-</article>
-
-
-  
-    <article id="post-实现对文件目录的实时监控" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/06/实现对文件目录的实时监控/" class="article-date">
-  <time datetime="2017-02-06T06:31:49.041Z" itemprop="datePublished">2017-02-06</time>
-</a>
+  <entry>
+    <title></title>
+    <link href="https://sabertang.github.io/2017/02/06/%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7/"/>
+    <id>https://sabertang.github.io/2017/02/06/实现对文件目录的实时监控/</id>
+    <published>2017-02-06T06:31:49.041Z</published>
+    <updated>2017-02-06T09:24:22.484Z</updated>
     
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
+    <content type="html"><![CDATA[<hr>
 <p>title: C＃实现对文件目录的实时监控<br>date: 2017-02-06 17:14:54<br>tags:<br>—## C＃实现对文件目录的实时监控</p>
 <ul>
 <li><p>本文主要描述如何通过C＃实现实时监控文件目录下的变化，包括文件和目录的添加，删除，修改和重命名等操作。</p>
@@ -395,95 +310,42 @@ while (true)
     Thread.Sleep(1000);
 }
 </code></pre><p><em>该程序实现了对文件目录下所有子目录和子文件的变化进行监控，并可通过FileChangeQueue属性访问文件变更消息，同时也可以设置其是否需要将数据持久化到磁盘文件中。</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://sabertang.github.io/2017/02/06/实现对文件目录的实时监控/" data-id="ciyutm5zh0005ykqk6hw7ez4c" class="article-share-link" data-share="baidu" data-title="">分享到</a>
-      
-
-      
-        <a href="https://sabertang.github.io/2017/02/06/实现对文件目录的实时监控/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-My-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/06/My-New-Post/" class="article-date">
-  <time datetime="2017-02-06T05:51:10.000Z" itemprop="datePublished">2017-02-06</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: C＃实现对文件目录的实时监控&lt;br&gt;date: 2017-02-06 17:14:54&lt;br&gt;tags:&lt;br&gt;—## C＃实现对文件目录的实时监控&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;本文主要描述如何通过C＃实现实时监控文件目录下的变化，包括文件和目录
+    
+    </summary>
     
     
-      <header class="article-header">
-        
+  </entry>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/06/My-New-Post/">My New Post</a>
-    </h1>
-  
-
-      </header>
+  <entry>
+    <title>My New Post</title>
+    <link href="https://sabertang.github.io/2017/02/06/My-New-Post/"/>
+    <id>https://sabertang.github.io/2017/02/06/My-New-Post/</id>
+    <published>2017-02-06T05:51:10.000Z</published>
+    <updated>2017-02-06T05:51:10.867Z</updated>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://sabertang.github.io/2017/02/06/My-New-Post/" data-id="ciyutm5z40001ykqk0ee04geg" class="article-share-link" data-share="baidu" data-title="My New Post">分享到</a>
-      
-
-      
-        <a href="https://sabertang.github.io/2017/02/06/My-New-Post/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/06/hello-world/" class="article-date">
-  <time datetime="2017-02-06T05:01:38.255Z" itemprop="datePublished">2017-02-06</time>
-</a>
+    <summary type="html">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/测试/">测试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
+    </summary>
     
     
-      <header class="article-header">
-        
+  </entry>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
+  <entry>
+    <title>Hello World</title>
+    <link href="https://sabertang.github.io/2017/02/06/hello-world/"/>
+    <id>https://sabertang.github.io/2017/02/06/hello-world/</id>
+    <published>2017-02-06T05:01:38.255Z</published>
+    <updated>2017-02-06T09:34:53.560Z</updated>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -492,178 +354,17 @@ while (true)
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://sabertang.github.io/2017/02/06/hello-world/" data-id="ciyutm5zg0004ykqkyn8lo4dp" class="article-share-link" data-share="baidu" data-title="Hello World">分享到</a>
-      
-
-      
-        <a href="https://sabertang.github.io/2017/02/06/hello-world/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
-      
-      <aside id="sidebar">
-  
+]]></content>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C＃/">C＃</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
+    <summary type="html">
     
-  
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
-  
+    </summary>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-  
+      <category term="测试" scheme="https://sabertang.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/02/06/C＃实现对文件目录的实时监控/">C＃实现对文件目录的实时监控</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/06/实现对文件目录的实时监控/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/06/My-New-Post/">My New Post</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/06/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="https://www.github.com" target="_blank">Github</a>
-          </li>
-        
-          <li>
-            <a href="http://www.csdn.net/" target="_blank">Csdn</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
+  </entry>
   
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 saber<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-</div>
-
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
-
-
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
-</div>
-<script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
-  }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-</div>
-</body>
-</html>
+</feed>
