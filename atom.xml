@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sabertang.github.io/"/>
-  <updated>2017-02-07T01:05:53.266Z</updated>
+  <updated>2017-02-07T09:29:50.035Z</updated>
   <id>https://sabertang.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ManagedDataAccess不能识别解决方法</title>
+    <link href="https://sabertang.github.io/2017/02/07/ManagedDataAccess%E4%B8%8D%E8%83%BD%E8%AF%86%E5%88%AB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://sabertang.github.io/2017/02/07/ManagedDataAccess不能识别解决方法/</id>
+    <published>2017-02-07T09:24:50.000Z</published>
+    <updated>2017-02-07T09:29:50.035Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ManagedDataAccess托管方式报错"><a href="#ManagedDataAccess托管方式报错" class="headerlink" title="ManagedDataAccess托管方式报错"></a>ManagedDataAccess托管方式报错</h3><pre><code>Failed to load provider **Oracle.ManagedDataAccess.Client** - 找不到请求的 .Net Framework Data Provider。可能没有安装。
+</code></pre><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>从<a href="http://www.oracle.com/technetwork/database/windows/downloads/utilsoft-087491.html" target="_blank" rel="external">oralce 官网</a>下载odac文件</li>
+<li>解压文件 在cmd命令行中执行<code>install_odpm.bat</code>，注意<strong>加参数</strong></li>
+<li>成功</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ManagedDataAccess托管方式报错&quot;&gt;&lt;a href=&quot;#ManagedDataAccess托管方式报错&quot; class=&quot;headerlink&quot; title=&quot;ManagedDataAccess托管方式报错&quot;&gt;&lt;/a&gt;ManagedDataAccess
+    
+    </summary>
+    
+      <category term="C＃" scheme="https://sabertang.github.io/categories/C%EF%BC%83/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>C＃实现对文件目录的实时监控</title>
